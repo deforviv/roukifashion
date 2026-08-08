@@ -10,23 +10,34 @@ import { categories, products } from '../data';
 
 const MAX_HOME_PRODUCTS = 45;
 
-// Shuffle and cap the product list once — mix all categories
+// Round-robin across categories — no duplicates.
+// When a category is exhausted, remaining slots are filled by others.
 function getSampledProducts(allProducts, limit) {
-  // Interleave by category so the mix is balanced
   const byCategory = {};
   allProducts.forEach((p) => {
     if (!byCategory[p.category]) byCategory[p.category] = [];
     byCategory[p.category].push(p);
   });
-  const cats = Object.values(byCategory);
-  const interleaved = [];
-  const maxRounds = Math.ceil(limit / cats.length);
-  for (let i = 0; i < maxRounds; i++) {
-    cats.forEach((group) => {
-      if (group[i]) interleaved.push(group[i]);
-    });
+
+  const groups = Object.values(byCategory);
+  const indices = new Array(groups.length).fill(0);
+  const result = [];
+
+  while (result.length < limit) {
+    let addedThisRound = false;
+    for (let g = 0; g < groups.length; g++) {
+      if (result.length >= limit) break;
+      if (indices[g] < groups[g].length) {
+        result.push(groups[g][indices[g]]);
+        indices[g]++;
+        addedThisRound = true;
+      }
+    }
+    // All categories exhausted before reaching limit
+    if (!addedThisRound) break;
   }
-  return interleaved.slice(0, limit);
+
+  return result;
 }
 
 export default function HomePage({ onSelectProduct, wishlist, onToggleWishlist, onNavigate }) {
