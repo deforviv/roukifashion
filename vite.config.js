@@ -5,10 +5,6 @@ export default defineConfig({
   plugins: [react()],
   build: {
     target: 'esnext',
-    minify: 'esbuild',
     cssCodeSplit: true,
-  },
-  esbuild: {
-    drop: ['console', 'debugger'],
   },
 });
