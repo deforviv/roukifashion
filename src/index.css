@@ -1566,6 +1566,72 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px 40px;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--brand-border);
+  color: var(--brand-dark);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pagination-nav {
+  width: 36px;
+  height: 36px;
+}
+
+.pagination-num {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--brand-gray-light);
+}
+
+.pagination-btn.active {
+  background: var(--brand-orange);
+  color: white;
+  border-color: var(--brand-orange);
+}
+
+.pagination-ellipsis {
+  color: var(--brand-gray);
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* ============================================================
    LOADING SCREEN (Suspense fallback)
    ============================================================ */
 .loading-screen {
