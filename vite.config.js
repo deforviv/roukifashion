@@ -7,13 +7,6 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssCodeSplit: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        },
-      },
-    },
   },
   esbuild: {
     drop: ['console', 'debugger'],
