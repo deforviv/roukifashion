@@ -34,6 +34,8 @@ export default function HeroBanner() {
               src={banner.image}
               alt=""
               aria-hidden="true"
+              fetchpriority={index === 0 ? "high" : "auto"}
+              loading={index === 0 ? "eager" : "lazy"}
               style={{ filter: 'blur(2px) brightness(0.4)', objectPosition: 'top' }}
             />
 
@@ -44,6 +46,8 @@ export default function HeroBanner() {
               className="banner-model-preview"
               src={banner.modelImage}
               alt="Modèle Rouki Fashion"
+              fetchpriority={index === 0 ? "high" : "auto"}
+              loading={index === 0 ? "eager" : "lazy"}
             />
 
             <div className="banner-content">

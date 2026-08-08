@@ -2,11 +2,9 @@
 // ROUKI FASHION — Product Card
 // ============================================================
 
-import { useState } from 'react';
-import Icon from './Icon';
+import { useState, memo } from 'react';
 
-export default function ProductCard({ product, onSelect, wishlist, onToggleWishlist }) {
-  const isLiked = wishlist.includes(product.id);
+const ProductCard = memo(({ product, onSelect }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
@@ -30,6 +28,7 @@ export default function ProductCard({ product, onSelect, wishlist, onToggleWishl
         <img
           src={product.image}
           alt={product.name}
+          loading="lazy"
           onLoad={() => setImgLoaded(true)}
           style={{ opacity: imgLoaded ? 1 : 0, transition: 'opacity 0.4s ease' }}
         />
@@ -39,8 +38,6 @@ export default function ProductCard({ product, onSelect, wishlist, onToggleWishl
             {product.badge}
           </span>
         )}
-
-
       </div>
 
       <div className="product-info">
@@ -66,4 +63,8 @@ export default function ProductCard({ product, onSelect, wishlist, onToggleWishl
       </div>
     </article>
   );
-}
+});
+
+ProductCard.displayName = 'ProductCard';
+
+export default ProductCard;

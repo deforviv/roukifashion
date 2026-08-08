@@ -2,7 +2,7 @@
 // ROUKI FASHION — Root App Component
 // ============================================================
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, Suspense, lazy } from 'react';
 import './index.css';
 
 import TopNav from './components/TopNav';
@@ -10,11 +10,11 @@ import BottomNav from './components/BottomNav';
 import SearchOverlay from './components/SearchOverlay';
 import Footer from './components/Footer';
 
-import HomePage from './pages/HomePage';
-import CataloguePage from './pages/CataloguePage';
-import PremiumPage from './pages/PremiumPage';
-import ContactPage from './pages/ContactPage';
-import ProductDetailPage from './pages/ProductDetailPage';
+const HomePage = lazy(() => import('./pages/HomePage'));
+const CataloguePage = lazy(() => import('./pages/CataloguePage'));
+const PremiumPage = lazy(() => import('./pages/PremiumPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
@@ -50,12 +50,14 @@ export default function App() {
     return (
       <div className="app-wrapper">
         <div className="main-content" style={{ paddingTop: 0, paddingBottom: 0 }}>
-          <ProductDetailPage
-            product={selectedProduct}
-            onBack={handleBack}
-            wishlist={wishlist}
-            onToggleWishlist={handleToggleWishlist}
-          />
+          <Suspense fallback={<div className="loading-screen" />}>
+            <ProductDetailPage
+              product={selectedProduct}
+              onBack={handleBack}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+            />
+          </Suspense>
         </div>
       </div>
     );
@@ -113,7 +115,9 @@ export default function App() {
     <div className="app-wrapper">
       <TopNav onSearch={() => setShowSearch(true)} />
       <main className="main-content" role="main">
-        {renderPage()}
+        <Suspense fallback={<div className="loading-screen" />}>
+          {renderPage()}
+        </Suspense>
       </main>
       <BottomNav
         activeTab={activeTab}
