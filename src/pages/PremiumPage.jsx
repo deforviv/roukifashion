@@ -99,10 +99,10 @@ export default function PremiumPage({ onSelectProduct, wishlist, onToggleWishlis
         className="products-grid"
         style={{ paddingTop: '20px', paddingBottom: totalPages > 1 ? '10px' : '30px' }}
       >
-        {currentProducts.map((product) => (
+      {currentProducts.map((product) => (
           <ProductCard
             key={product.id}
-            product={product}
+            product={{ ...product, badge: '⭐ Premium' }}
             onSelect={onSelectProduct}
             wishlist={wishlist}
             onToggleWishlist={onToggleWishlist}

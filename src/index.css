@@ -578,6 +578,16 @@ ul { list-style: none; }
   z-index: 2;
 }
 
+/* Gold badge for Premium products */
+.product-badge[aria-label*="Premium"] {
+  background: linear-gradient(135deg, #b8860b, #d4af37, #c9973a);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(212,175,55,0.45);
+  text-transform: none;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
 .product-info {
   padding: 12px;
 }
