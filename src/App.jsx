@@ -49,6 +49,54 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  const renderPage = () => {
+    switch (activeTab) {
+      case 'home':
+        return (
+          <>
+            <HomePage
+              onSelectProduct={handleSelectProduct}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+              onNavigate={handleNavigate}
+            />
+            <Footer onNavigate={handleNavigate} />
+          </>
+        );
+      case 'catalogue':
+        return (
+          <>
+            <CataloguePage
+              onSelectProduct={handleSelectProduct}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+            />
+            <Footer onNavigate={handleNavigate} />
+          </>
+        );
+      case 'premium':
+        return (
+          <>
+            <PremiumPage
+              onSelectProduct={handleSelectProduct}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+            />
+            <Footer onNavigate={handleNavigate} />
+          </>
+        );
+      case 'contact':
+        return (
+          <>
+            <ContactPage />
+            <Footer onNavigate={handleNavigate} />
+          </>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="app-wrapper">
       {/* Product Detail View */}
