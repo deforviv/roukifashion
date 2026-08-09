@@ -292,13 +292,14 @@ ul { list-style: none; }
 
 .banner-welcome {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.5px;
   color: var(--brand-orange);
-  margin-bottom: 8px;
-  opacity: 0.9;
+  margin-bottom: 6px;
+  line-height: 1.4;
 }
 
 .banner-title {
