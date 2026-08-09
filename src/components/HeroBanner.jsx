@@ -51,6 +51,7 @@ export default function HeroBanner() {
             />
 
             <div className="banner-content">
+              <span className="banner-welcome">Bienvenue chez Rouki Fashion</span>
               <h2 className="banner-title" style={{ whiteSpace: 'pre-line' }}>
                 {banner.title}
               </h2>

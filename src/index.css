@@ -290,6 +290,17 @@ ul { list-style: none; }
   50% { opacity: 0.6; transform: scale(0.8); }
 }
 
+.banner-welcome {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--brand-orange);
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
 .banner-title {
   font-family: var(--font-cursive);
   font-size: 1.8rem;
